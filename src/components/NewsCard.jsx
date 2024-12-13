@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveArticle, unsaveArticle } from '../redux/savedSlice';
+import { saveArticle, unsaveArticle } from '../redux/savedNews';
 
 const NewsCard = ({ article }) => {
   const dispatch = useDispatch();
