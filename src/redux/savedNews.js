@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const savedSlice = createSlice({
+const savedNews = createSlice({
   name: 'saved',
   initialState: [],
   reducers: {
@@ -15,5 +15,5 @@ const savedSlice = createSlice({
   }
 });
 
-export const { saveArticle, unsaveArticle } = savedSlice.actions;
-export default savedSlice.reducer;
+export const { saveArticle, unsaveArticle } = savedNews.actions;
+export default savedNews.reducer;
