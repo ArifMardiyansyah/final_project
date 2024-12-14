@@ -15,7 +15,7 @@ const Search = () => {
           params: {
             'api-key': 'ROKD5rvLAFG0ylF7d0lpAy3ZnvgAiAAz',
             q: query,
-            'fq': 'section_name:("World" OR "Technology")',
+            'fq': 'section_name:("World" OR "Technology" OR "Health" OR "Sports" OR "Indonesia")',
             'sort': 'newest'
           }
         });
