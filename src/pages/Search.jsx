@@ -34,7 +34,7 @@ const Search = () => {
       <div className="row">
         {articles.map((article) => (
           <div key={article._id} className="col-md-4 mb-4">
-            <NewsCard article={article} />
+            <NewsCard article={{ ...article, url: article.web_url }} />
           </div>
         ))}
       </div>
