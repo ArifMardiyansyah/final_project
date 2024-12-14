@@ -4,8 +4,8 @@ import { saveArticle, unsaveArticle } from '../redux/savedNews';
 
 const NewsCard = ({ article }) => {
   const dispatch = useDispatch();
-  const savedArticles = useSelector(state => state.saved);
-  const isSaved = savedArticles.some(saved => saved.url === article.url);
+  const savedArticles = useSelector((state) => state.saved);
+  const isSaved = savedArticles.some((saved) => saved.url === article.url);
 
   const handleSave = () => {
     if (isSaved) {
@@ -17,10 +17,23 @@ const NewsCard = ({ article }) => {
 
   return (
     <div className="card mb-3">
+      {article.imageUrl && (
+        <img
+          src={`https://www.nytimes.com/${article.imageUrl}`}
+          className="card-img-top"
+          alt={article.title}
+          style={{ height: '200px', objectFit: 'cover' }}
+        />
+      )}
       <div className="card-body">
         <h5 className="card-title">{article.title}</h5>
         <p className="card-text">{article.abstract}</p>
-        <a href={article.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary me-2">
+        <a
+          href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary me-2"
+        >
           Baca
         </a>
         <button
@@ -39,6 +52,7 @@ NewsCard.propTypes = {
     title: PropTypes.string.isRequired,
     abstract: PropTypes.string,
     url: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
   }).isRequired,
 };
 

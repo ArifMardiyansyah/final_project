@@ -8,8 +8,19 @@ const Programming = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=ROKD5rvLAFG0ylF7d0lpAy3ZnvgAiAAz');
-        setArticles(response.data.results);
+        const response = await axios.get(
+          'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=technology&api-key=ROKD5rvLAFG0ylF7d0lpAy3ZnvgAiAAz'
+        );
+        setArticles(
+          response.data.response.docs.map((article) => ({
+            title: article.headline.main,
+            abstract: article.abstract,
+            url: article.web_url,
+            imageUrl: article.multimedia.length
+              ? article.multimedia[0].url
+              : null,
+          }))
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }

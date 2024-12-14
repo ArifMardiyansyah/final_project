@@ -19,7 +19,15 @@ const Search = () => {
             'sort': 'newest'
           }
         });
-        setArticles(response.data.response.docs);
+
+        const articlesWithImages = response.data.response.docs.map((article) => ({
+          title: article.headline.main,
+          abstract: article.abstract,
+          url: article.web_url,
+          imageUrl: article.multimedia.length > 0 ? article.multimedia[0].url : null,
+        }));
+
+        setArticles(articlesWithImages);
       } catch (error) {
         console.error('Error fetching search results:', error);
       }
@@ -32,9 +40,9 @@ const Search = () => {
     <div className="container mt-4">
       <h2>Search Results for {query}</h2>
       <div className="row">
-        {articles.map((article) => (
-          <div key={article._id} className="col-md-4 mb-4">
-            <NewsCard article={{ ...article, url: article.web_url }} />
+        {articles.map((article, index) => (
+          <div key={index} className="col-md-4 mb-4">
+            <NewsCard article={article} />
           </div>
         ))}
       </div>
