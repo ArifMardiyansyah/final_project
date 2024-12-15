@@ -9,7 +9,7 @@ const Indonesia = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=indonesian&api-key=ROKD5rvLAFG0ylF7d0lpAy3ZnvgAiAAz'
+          'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Prabowo&api-key=ROKD5rvLAFG0ylF7d0lpAy3ZnvgAiAAz'
         );
         setArticles(
           response.data.response.docs.map((article) => ({
